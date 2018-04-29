@@ -1,0 +1,13 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+build:
+  project: /ottxmltv.sln
+  verbosity: normal
+deploy:
+- provider: Environment
+  name: OttXmltv
+  on:
+    branch: master
+test: off
+install:
+- dotnet restore

@@ -10,6 +10,7 @@ namespace Proxy
     public class XmlTvWriter : IDisposable
     {
         private const string ICONS_HOST = "http://ott.watch/images/";
+        private static readonly DateTime UNIX_START = new DateTime(1970, 1, 1, 0, 0, 0, 0);
         private XmlWriter _writer;
 
         public XmlTvWriter(Stream output)
@@ -52,8 +53,8 @@ namespace Proxy
             {
                 writeStartElement("programme");
                 writeAttribute("channel", programme.Channel.ChannelId);
-                writeAttribute("start", programme.StartTime);
-                writeAttribute("stop", programme.EndTime);
+                writeAttribute("start", toDateTime(programme.StartTime));
+                writeAttribute("stop", toDateTime(programme.EndTime));
 
                 writeStartElement("title");
                 writeAttribute("lang", "ru");
@@ -83,5 +84,7 @@ namespace Proxy
         private void writeStartElement(string name) => _writer.WriteStartElement(name, null);
 
         private void writeAttribute(string name, object value) => _writer.WriteAttributeString(name, null, value is string ? (string)value : value.ToString());
+
+        private string toDateTime(double unixTime) => UNIX_START.AddSeconds(unixTime).ToString($"yyyyMMddHHmmss 0000");
     }
 }

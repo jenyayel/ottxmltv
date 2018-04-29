@@ -8,10 +8,10 @@ namespace Proxy.Ott
         public string Name { get; set; }
 
         [JsonProperty("time")]
-        public int StartTime { get; set; }
+        public double StartTime { get; set; }
 
         [JsonProperty("time_to")]
-        public int EndTime { get; set; }
+        public double EndTime { get; set; }
 
         [JsonProperty("descr")]
         public string Description { get; set; }

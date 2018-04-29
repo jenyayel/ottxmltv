@@ -14,6 +14,6 @@ namespace Proxy.Ott
         public string ChannelImage { get; set; }
 
         [JsonProperty("time")]
-        public int ProgramStartTime { get; set; }
+        public double ProgramStartTime { get; set; }
     }
 }

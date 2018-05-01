@@ -69,7 +69,7 @@ namespace Proxy.Ott
                             programme.Channel = channel;
                             programmes.Add(programme);
 
-                            if (programmes.Count == 10)
+                            if (programmes.Count == 100)
                                 break;
                         }
                     }
